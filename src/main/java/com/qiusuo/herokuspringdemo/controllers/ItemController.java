@@ -15,7 +15,7 @@ public class ItemController {
     private ItemService itemService;
 
     @GetMapping("/")
-    public List<Item> index() {
+    public List<Item> index() throws InterruptedException{
         return itemService.getItems();
     }
 }
