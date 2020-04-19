@@ -1,4 +1,4 @@
-package com.qiusuo.herokuspringdemo.config;
+package com.qiusuo.techblogs.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

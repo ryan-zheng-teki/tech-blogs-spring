@@ -1,13 +1,13 @@
-package com.qiusuo.herokuspringdemo;
+package com.qiusuo.techblogs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HerokuSpringdemoApplication {
+public class TechBlogsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HerokuSpringdemoApplication.class, args);
+		SpringApplication.run(TechBlogsApplication.class, args);
 	}
 
 }

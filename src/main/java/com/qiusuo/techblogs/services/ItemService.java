@@ -1,7 +1,7 @@
-package com.qiusuo.herokuspringdemo.services;
+package com.qiusuo.techblogs.services;
 
 
-import com.qiusuo.herokuspringdemo.models.Item;
+import com.qiusuo.techblogs.models.Item;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.qiusuo.herokuspringdemo.models;
+package com.qiusuo.techblogs.models;
 
 public class Item {
     public Item(String name, String description) {

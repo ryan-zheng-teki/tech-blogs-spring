@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qiusuo</groupId>
-	<artifactId>heroku-springdemo</artifactId>
+	<artifactId>tech-blogs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>heroku-springdemo</name>
+	<name>tech-blogs</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
