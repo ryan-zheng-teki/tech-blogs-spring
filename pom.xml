@@ -30,6 +30,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -59,13 +64,12 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<outputDir>${project.build.sourceDirectory}/generated-sources/graphql</outputDir>
-							<packageName>com.qiusuo.techblogs.graphql.model</packageName>
+							<outputDir>${project.build.sourceDirectory}/generated-sources/</outputDir>
+							<packageName>com.qiusuo.techblogs.graphql</packageName>
 							<customTypesMapping>
 								<DateTime>java.util.Date</DateTime>
 								<Price.amount>java.math.BigDecimal</Price.amount>
 							</customTypesMapping>
-							<modelNameSuffix>TO</modelNameSuffix>
 						</configuration>
 					</execution>
 				</executions>

@@ -4,6 +4,8 @@ package com.qiusuo.techblogs.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BlogItem {
@@ -19,6 +21,10 @@ public class BlogItem {
 
     @Column
     private String hyperTextContent;
+
+    @ManyToOne
+    @JoinColumn(name="blogcategory_fk")
+    private BlogCategory blogCategory;
 
 
     public int getSequenceNumber() {

@@ -13,7 +13,7 @@ public class BlogCategory {
     @Column
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy="blogCategory")
     private List<BlogItem> blogs;
 
     public String getName() {
