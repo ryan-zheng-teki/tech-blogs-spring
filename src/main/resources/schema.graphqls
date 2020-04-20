@@ -1,0 +1,16 @@
+type BlogCategory {
+    id: ID!
+    name: String!
+    children: [BlogCategory]
+}
+
+type BlogItem {
+    id: ID!
+    summary: String!
+    hyperTextContent: String!
+
+}
+
+type Query {
+    allCategories: [BlogCategory]!
+}
