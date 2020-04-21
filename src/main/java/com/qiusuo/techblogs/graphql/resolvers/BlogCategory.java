@@ -1,4 +1,4 @@
-package com.qiusuo.techblogs.graphql;
+package com.qiusuo.techblogs.graphql.resolvers;
 
 import java.util.*;
 

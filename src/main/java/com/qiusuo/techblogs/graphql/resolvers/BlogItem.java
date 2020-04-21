@@ -1,6 +1,4 @@
-package com.qiusuo.techblogs.graphql;
-
-import java.util.*;
+package com.qiusuo.techblogs.graphql.resolvers;
 
 public class BlogItem {
 
