@@ -1,11 +1,10 @@
 type BlogCategory {
-    id: ID!
     name: String!
-    children: [BlogCategory]
+    subCategories: [BlogCategory]
 }
 
 type BlogItem {
-    id: ID!
+    name: String!
     summary: String!
     hyperTextContent: String!
 
