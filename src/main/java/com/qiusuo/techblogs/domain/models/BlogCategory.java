@@ -2,6 +2,7 @@ package com.qiusuo.techblogs.domain.models;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,6 +21,7 @@ public class BlogCategory {
     @JoinColumn(name = "parentCategory")
     private BlogCategory parentCategory;
 
+    @Column(unique = true)
     private int sequenceNumber;
 
     @OneToMany(mappedBy = "blogCategory")
