@@ -1,15 +1,22 @@
 type BlogCategory {
     name: String!
     subCategories: [BlogCategory]
+    blogs: [BlogItem]
 }
 
 type BlogItem {
-    name: String!
+    title: String!
     summary: String!
-    hyperTextContent: String!
+    content: String!
 
 }
 
 type Query {
-    allCategories: [BlogCategory]!
+    categories: [BlogCategory]!
+}
+
+
+
+type Mutation {
+    createBlog(categoryId: String!, blogContent: String!): BlogItem!
 }

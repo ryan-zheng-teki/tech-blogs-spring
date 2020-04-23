@@ -1,7 +1,7 @@
 package com.qiusuo.techblogs.graphql;
 
 import com.qiusuo.techblogs.domain.models.BlogCategory;
-import com.qiusuo.techblogs.domain.services.BlogCategoryService;
+import com.qiusuo.techblogs.domain.services.BlogService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,9 +12,9 @@ import java.util.Collection;
 public class Query implements GraphQLQueryResolver {
 
     @Autowired
-    BlogCategoryService blogCategoryService;
+    BlogService blogService;
 
-    public Collection<BlogCategory> allCategories() {
-        return blogCategoryService.getAllCategories();
+    public Collection<BlogCategory> categories() {
+        return blogService.getAllCategories();
     }
 }

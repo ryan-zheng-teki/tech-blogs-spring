@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,6 +28,6 @@ public class BlogCategory {
     @OneToMany(mappedBy = "blogCategory")
     private List<BlogItem> blogs;
 
-    @OneToMany(mappedBy = "parentCategory")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parentCategory")
     private List<BlogCategory> subCategories;
 }
