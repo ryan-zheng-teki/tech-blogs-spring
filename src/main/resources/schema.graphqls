@@ -13,6 +13,7 @@ type BlogItem {
 
 type Query {
     categories: [BlogCategory]!
+    latestBlogs(number: Int!): [BlogItem]
 }
 
 

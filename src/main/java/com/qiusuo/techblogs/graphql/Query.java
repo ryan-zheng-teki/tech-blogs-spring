@@ -1,6 +1,7 @@
 package com.qiusuo.techblogs.graphql;
 
 import com.qiusuo.techblogs.domain.models.BlogCategory;
+import com.qiusuo.techblogs.domain.models.BlogItem;
 import com.qiusuo.techblogs.domain.services.BlogService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,4 +18,9 @@ public class Query implements GraphQLQueryResolver {
     public Collection<BlogCategory> categories() {
         return blogService.getAllCategories();
     }
+
+    public Collection<BlogItem> latestBlogs(int number) {
+        return blogService.getLatestedBlogs(number);
+    }
+
 }
