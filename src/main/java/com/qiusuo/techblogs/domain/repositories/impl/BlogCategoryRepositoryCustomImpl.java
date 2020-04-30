@@ -1,15 +1,15 @@
 package com.qiusuo.techblogs.domain.repositories.impl;
 
 import com.qiusuo.techblogs.domain.models.BlogCategory;
+import com.qiusuo.techblogs.domain.models.BlogItem;
 import com.qiusuo.techblogs.domain.models.QBlogCategory;
+import com.qiusuo.techblogs.domain.models.QBlogItem;
 import com.qiusuo.techblogs.domain.repositories.BlogCategoryRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
-@Transactional
 public class BlogCategoryRepositoryCustomImpl implements BlogCategoryRepositoryCustom {
     @Autowired
     private JPAQueryFactory queryFactory;
@@ -28,5 +28,17 @@ public class BlogCategoryRepositoryCustomImpl implements BlogCategoryRepositoryC
 
         return topCategories;
     }
+
+
+    @Override
+    public Collection<BlogItem> getBlogsForCategory(String categoryId) {
+        QBlogItem blogItem = QBlogItem.blogItem;
+        Collection<BlogItem> blogs = queryFactory.selectFrom(blogItem)
+                .orderBy(blogItem.creationDate.asc())
+                .where(blogItem.blogCategory.name.eq(categoryId))
+                .fetch();
+        return blogs;
+    }
+
 
 }

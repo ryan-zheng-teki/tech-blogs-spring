@@ -10,10 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.List;
 
+@Transactional
 @Service
 public class BlogService {
 
@@ -23,8 +24,8 @@ public class BlogService {
     @Autowired
     private BlogItemRepository blogItemRepository;
 
-    public List<BlogItem> getBlogs(String categoryId) {
-        return blogCategoryRepository.findById(categoryId).get().getBlogs();
+    public Collection<BlogItem> getBlogsForCategory(String categoryId) {
+        return blogCategoryRepository.getBlogsForCategory(categoryId);
     }
 
 
