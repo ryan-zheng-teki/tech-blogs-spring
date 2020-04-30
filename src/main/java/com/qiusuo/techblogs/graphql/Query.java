@@ -19,8 +19,8 @@ public class Query implements GraphQLQueryResolver {
         return blogService.getAllCategories();
     }
 
-    public Collection<BlogItem> latestBlogs(int number) {
-        return blogService.getLatestedBlogs(number);
+    public Collection<BlogItem> latestBlogs(int latest) {
+        return blogService.getLatestedBlogs(latest);
     }
 
     public Collection<BlogItem> blogsForCategory(String categoryId) {

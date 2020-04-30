@@ -33,8 +33,8 @@ public class BlogService {
         return blogCategoryRepository.getTopLevelCategories();
     }
 
-    public Collection<BlogItem> getLatestedBlogs(int number) {
-        Pageable sortedByCeationDt = PageRequest.of(0, number, Sort.by(Sort.Direction.ASC, "creationDate"));
+    public Collection<BlogItem> getLatestedBlogs(int latest) {
+        Pageable sortedByCeationDt = PageRequest.of(0, latest, Sort.by(Sort.Direction.ASC, "creationDate"));
         return blogItemRepository.findAll(sortedByCeationDt).getContent();
     }
 

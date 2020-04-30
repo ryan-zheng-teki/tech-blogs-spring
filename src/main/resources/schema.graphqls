@@ -13,7 +13,7 @@ type BlogItem {
 
 type Query {
     categories: [BlogCategory]!
-    latestBlogs(number: Int!): [BlogItem]
+    latestBlogs(latest: Int!): [BlogItem]
     blogsForCategory(categoryId: String!): [BlogItem]
 }
 
