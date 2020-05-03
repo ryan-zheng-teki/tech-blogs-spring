@@ -6,7 +6,6 @@ we could directly interface with service layer. This saves us the need of writti
 
 # Preparation
 
-##In intellij, install the 
 Step 1: Install lombok annotation preprocessor by following this guide
 https://www.baeldung.com/lombok-ide
 
