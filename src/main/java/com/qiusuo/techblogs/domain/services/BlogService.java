@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
 @Transactional
 @Service
@@ -33,7 +34,7 @@ public class BlogService {
         return blogCategoryRepository.getTopLevelCategories();
     }
 
-    public Collection<BlogItem> getLatestedBlogs(int latest) {
+    public List<BlogItem> getLatestedBlogs(int latest) {
         Pageable sortedByCeationDt = PageRequest.of(0, latest, Sort.by(Sort.Direction.ASC, "creationDate"));
         return blogItemRepository.findAll(sortedByCeationDt).getContent();
     }

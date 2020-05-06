@@ -1,10 +1,12 @@
 type BlogCategory {
+    id: ID!
     name: String!
     subCategories: [BlogCategory]
     blogs: [BlogItem]
 }
 
 type BlogItem {
+    id: ID!
     title: String!
     summary: String!
     content: String!
@@ -13,7 +15,7 @@ type BlogItem {
 
 type Query {
     categories: [BlogCategory]!
-    latestBlogs(latest: Int!): [BlogItem]
+    blogs(first: Int, after: String): BlogItemConnection @connection(for: "BlogItem")
     blogsForCategory(categoryId: String!): [BlogItem]
 }
 

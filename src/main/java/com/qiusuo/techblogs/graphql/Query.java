@@ -4,6 +4,9 @@ import com.qiusuo.techblogs.domain.models.BlogCategory;
 import com.qiusuo.techblogs.domain.models.BlogItem;
 import com.qiusuo.techblogs.domain.services.BlogService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
+import graphql.relay.Connection;
+import graphql.relay.SimpleListConnection;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +22,8 @@ public class Query implements GraphQLQueryResolver {
         return blogService.getAllCategories();
     }
 
-    public Collection<BlogItem> latestBlogs(int latest) {
-        return blogService.getLatestedBlogs(latest);
+    public Connection<BlogItem> blogs(int first, String after, DataFetchingEnvironment env) {
+        return new SimpleListConnection<>(blogService.getLatestedBlogs(first)).get(env);
     }
 
     public Collection<BlogItem> blogsForCategory(String categoryId) {
