@@ -4,14 +4,13 @@
 ####Use Bash to read the environment variable.
 ####Set the TECH_BLOG HOME environment variable.
 echo "Starting Tech-Blogs"
-
-if [ ! -x "$TECH_BLOG_HOME" ]
+if [ -z "$TECH_BLOG_HOME" ]
 then
   echo "TECH_BLOG_HOME not set"
   exit
 fi
 
-if [ ! -x "$KEY_STORE" ]
+if [ -z "$KEY_STORE" ]
 then
   echo "KEY_STORE not set"
   exit
