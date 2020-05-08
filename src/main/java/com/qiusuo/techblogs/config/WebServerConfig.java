@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 public class WebServerConfig {
+    /*
     @Bean
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat =
@@ -44,7 +45,7 @@ public class WebServerConfig {
         connector.setScheme("http");
         connector.setSecure(false);
         connector.setPort(serverPortHttp);
-        connector.setRedirectPort(serverPortHttps);
         return connector;
     }
+    */
 }
