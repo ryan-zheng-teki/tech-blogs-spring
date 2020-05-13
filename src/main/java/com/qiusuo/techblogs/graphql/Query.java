@@ -1,8 +1,8 @@
 package com.qiusuo.techblogs.graphql;
 
-import com.qiusuo.techblogs.domain.models.BlogCategory;
-import com.qiusuo.techblogs.domain.models.BlogItem;
-import com.qiusuo.techblogs.domain.services.BlogService;
+import com.qiusuo.techblogs.domain.models.blog.BlogCategory;
+import com.qiusuo.techblogs.domain.models.blog.BlogItem;
+import com.qiusuo.techblogs.domain.services.blog.BlogService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.relay.Connection;
 import graphql.relay.SimpleListConnection;

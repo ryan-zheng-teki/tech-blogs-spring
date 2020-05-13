@@ -1,10 +1,10 @@
-package com.qiusuo.techblogs.domain.services;
+package com.qiusuo.techblogs.domain.services.blog;
 
 
-import com.qiusuo.techblogs.domain.models.BlogCategory;
-import com.qiusuo.techblogs.domain.models.BlogItem;
-import com.qiusuo.techblogs.domain.repositories.BlogCategoryRepository;
-import com.qiusuo.techblogs.domain.repositories.BlogItemRepository;
+import com.qiusuo.techblogs.domain.models.blog.BlogCategory;
+import com.qiusuo.techblogs.domain.models.blog.BlogItem;
+import com.qiusuo.techblogs.domain.repositories.blog.BlogCategoryRepository;
+import com.qiusuo.techblogs.domain.repositories.blog.BlogItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

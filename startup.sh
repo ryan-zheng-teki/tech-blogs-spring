@@ -2,7 +2,8 @@
 
 #########Put key store path into environment variable.
 ####Use Bash to read the environment variable.
-####Set the TECH_BLOG HOME environment variable.
+####Set the TECH_BLOG HOME environment variable
+source
 echo "Starting Tech-Blogs"
 if [ -z "$TECH_BLOG_HOME" ]
 then
@@ -17,5 +18,4 @@ then
 fi
 
 export TECH_BLOGS_CLASSPATH="${TECH_BLOG_HOME}:${KEY_STORE}"
-echo "classpath is ${TECH_BLOGS_CLASSPATH}"
-exec java  -classpath "${TECH_BLOGS_CLASSPATH}"  -Dloader.main=com.qiusuo.techblogs.TechBlogsApplication  org.springframework.boot.loader.PropertiesLauncher
+exec java  -classpath "${TECH_BLOGS_CLASSPATH}" $JAVA_OPTS  -Dloader.main=com.qiusuo.techblogs.TechBlogsApplication  org.springframework.boot.loader.PropertiesLauncher

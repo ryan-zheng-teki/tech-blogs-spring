@@ -1,6 +1,6 @@
-package com.qiusuo.techblogs.graphql.resolvers;
+package com.qiusuo.techblogs.graphql.resolvers.blog;
 
-import com.qiusuo.techblogs.domain.models.BlogCategory;
+import com.qiusuo.techblogs.domain.models.blog.BlogCategory;
 import graphql.kickstart.tools.GraphQLResolver;
 import org.springframework.stereotype.Component;
 

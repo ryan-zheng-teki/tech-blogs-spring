@@ -1,12 +1,13 @@
-package com.qiusuo.techblogs.domain.repositories.impl;
+package com.qiusuo.techblogs.domain.repositories.blog.impl;
 
-import com.qiusuo.techblogs.domain.models.BlogCategory;
-import com.qiusuo.techblogs.domain.models.BlogItem;
-import com.qiusuo.techblogs.domain.models.QBlogCategory;
-import com.qiusuo.techblogs.domain.models.QBlogItem;
-import com.qiusuo.techblogs.domain.repositories.BlogCategoryRepositoryCustom;
+import com.qiusuo.techblogs.domain.models.blog.BlogCategory;
+import com.qiusuo.techblogs.domain.models.blog.BlogItem;
+import com.qiusuo.techblogs.domain.models.blog.QBlogCategory;
+import com.qiusuo.techblogs.domain.models.blog.QBlogItem;
+import com.qiusuo.techblogs.domain.repositories.blog.BlogCategoryRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.util.Collection;
 

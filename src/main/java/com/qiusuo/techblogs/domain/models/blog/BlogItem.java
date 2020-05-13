@@ -1,4 +1,4 @@
-package com.qiusuo.techblogs.domain.models;
+package com.qiusuo.techblogs.domain.models.blog;
 
 
 import lombok.Data;

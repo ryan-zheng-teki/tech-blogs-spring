@@ -1,0 +1,9 @@
+type User {
+    id: ID!
+    name: String!
+}
+
+type UserInput {
+    id: ID!
+    name: String!
+}
