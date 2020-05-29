@@ -1,8 +1,8 @@
 version: "3.7"
 services:
         mysql:
-                container_name: 'tech-blogs-mysql'
-                image: 'mysql:5.7'
+                container_name: 'tech-blogs'
+                image: 'mysql:8.0'
                 environment:
                         - MYSQL_ROOT_PASSWORD=techblogs
                         - MYSQL_DATABASE=techblogs
