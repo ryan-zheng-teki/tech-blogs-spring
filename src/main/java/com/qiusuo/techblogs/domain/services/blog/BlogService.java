@@ -12,12 +12,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.Collection;
 import java.util.List;
 
 @Transactional
 @Service
 public class BlogService {
+    @Autowired
+    private EntityManager em;
 
     @Autowired
     private BlogCategoryRepository blogCategoryRepository;
@@ -39,11 +42,11 @@ public class BlogService {
         return blogItemRepository.findAll(sortedByCeationDt).getContent();
     }
 
-    public BlogItem saveBlog(String categoryId, String blogContent) {
+
+    public BlogItem createBlog(String categoryId, String blogContent) {
         BlogItem blogItem = new BlogItem();
 
-        BlogCategory parentCategory = new BlogCategory();
-        parentCategory.setName(categoryId);
+        BlogCategory parentCategory = em.getReference(BlogCategory.class, categoryId);
         blogItem.setContent(blogContent.getBytes());
         blogItem.setBlogCategory(parentCategory);
         blogItemRepository.save(blogItem);

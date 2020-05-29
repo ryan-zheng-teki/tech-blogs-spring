@@ -7,7 +7,7 @@ type BlogCategory {
 
 type BlogItem {
     id: ID!
-    title: String!
-    summary: String!
+    title: String
+    summary: String
     content: String!
 }

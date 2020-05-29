@@ -24,10 +24,3 @@ INSERT INTO BlogCategory (name,sequenceNumber,parentCategory) VALUES ('Python',1
 INSERT INTO BlogCategory (name,sequenceNumber) VALUES ('Machine Learning',17);
 INSERT INTO BlogCategory (name,sequenceNumber,parentCategory) VALUES ('CV',18,'Machine Learning');
 INSERT INTO BlogCategory (name,sequenceNumber,parentCategory) VALUES ('NLP',19,'Machine Learning');
-
-
-INSERT INTO Privilege (id,name) VALUES (1,'READ_PRIVILEGE');
-INSERT INTO Privilege (id,name) VALUES (2,'WRITE_PRIVILEGE');
-
-INSERT INTO Role (id,name) VALUES (1,'ROLE_USER');
-INSERT INTO roles_privileges (role_id,privilege_id) VALUES ((select id from Role where name = "ROLE_USER"), (select id from Privilege where  name = "READ_PRIVILEGE"))

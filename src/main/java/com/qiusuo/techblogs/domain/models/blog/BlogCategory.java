@@ -1,6 +1,9 @@
 package com.qiusuo.techblogs.domain.models.blog;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +16,9 @@ import java.util.List;
 
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
 @Entity
 public class BlogCategory {
     @Id

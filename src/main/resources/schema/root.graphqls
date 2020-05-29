@@ -7,5 +7,5 @@ type Query {
 
 type Mutation {
     createBlog(categoryId: String!, blogContent: String!): BlogItem!
-    addUser(id: ID!): User
+    addUser(name: String!): User!
 }

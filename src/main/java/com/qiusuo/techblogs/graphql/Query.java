@@ -29,6 +29,4 @@ public class Query implements GraphQLQueryResolver {
     public Collection<BlogItem> blogsForCategory(String categoryId) {
         return blogService.getBlogsForCategory(categoryId);
     }
-
-
 }
