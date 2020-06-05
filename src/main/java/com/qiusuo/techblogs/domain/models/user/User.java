@@ -36,5 +36,5 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    private RegistrationType type;
+    private UserType userType;
 }

@@ -1,6 +1,6 @@
 package com.qiusuo.techblogs.domain.models.user;
 
-public enum RegistrationType {
+public enum UserType {
     GITHUB,
     GOOGLE,
     FACEBOOK,
