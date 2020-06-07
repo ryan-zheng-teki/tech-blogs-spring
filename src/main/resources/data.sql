@@ -29,5 +29,6 @@ INSERT INTO BlogCategory (name,sequenceNumber,parentCategory) VALUES ('NLP',19,'
 INSERT INTO Privilege (id,name) VALUES (1,'READ_PRIVILEGE');
 INSERT INTO Privilege (id,name) VALUES (2,'WRITE_PRIVILEGE');
 
-INSERT INTO Role (id,name) VALUES (1,'ROLE_USER');
+INSERT INTO Role (id,name) VALUES (1,'ROLE_ADMIN');
+INSERT INTO Role (id,name) VALUES (2,'ROLE_USER');
 INSERT INTO roles_privileges (role_id,privilege_id) VALUES ((select id from Role where name = "ROLE_USER"), (select id from Privilege where  name = "READ_PRIVILEGE"))
