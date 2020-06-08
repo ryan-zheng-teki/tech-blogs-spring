@@ -1,0 +1,16 @@
+input JwtRequest {
+    username: String!
+    password: String
+    phoneNumber: String
+    verificationCode: String
+    usertype: String!
+    accessToken: String!
+}
+
+type JwtResponse {
+    jwtToken: String!
+}
+
+type AuthMutation extend type Mutation {
+    createToken(authInput: JwtRequest!): JwtResponse!
+}

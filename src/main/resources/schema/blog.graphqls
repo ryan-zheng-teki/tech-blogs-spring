@@ -11,3 +11,15 @@ type BlogItem {
     summary: String
     content: String!
 }
+
+type BlogQuery extend type Query {
+    categories: [BlogCategory]!
+    blogs(first: Int, after: String): BlogItemConnection @connection(for: "BlogItem")
+    blogsForCategory(categoryId: String!): [BlogItem]
+}
+
+type BlogMutation extend type Mutation {
+    createBlog(categoryId: String!, blogContent: String!): BlogItem!
+}
+
+

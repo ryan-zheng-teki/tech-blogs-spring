@@ -3,7 +3,11 @@ type User {
     name: String!
 }
 
-type UserInput {
-    id: ID!
+type UserRegisterInput {
     name: String!
+    password: String!
+}
+
+type UserMutation {
+    registerUser(name: String): User!
 }

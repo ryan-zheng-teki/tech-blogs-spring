@@ -1,4 +1,4 @@
-package com.qiusuo.techblogs.graphql;
+package com.qiusuo.techblogs.graphql.query;
 
 import com.qiusuo.techblogs.domain.models.blog.BlogCategory;
 import com.qiusuo.techblogs.domain.models.blog.BlogItem;
@@ -13,8 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 @Component
-public class Query implements GraphQLQueryResolver {
-
+public class BlogQuery implements GraphQLQueryResolver {
     @Autowired
     BlogService blogService;
 
@@ -29,4 +28,5 @@ public class Query implements GraphQLQueryResolver {
     public Collection<BlogItem> blogsForCategory(String categoryId) {
         return blogService.getBlogsForCategory(categoryId);
     }
+
 }

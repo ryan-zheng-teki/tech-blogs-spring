@@ -6,7 +6,6 @@ import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -21,9 +20,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
