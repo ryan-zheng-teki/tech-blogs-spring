@@ -17,5 +17,11 @@ then
   exit
 fi
 
-export TECH_BLOGS_CLASSPATH="${TECH_BLOG_HOME}:${KEY_STORE}"
+if [ -z "$CONFIG" ]
+then
+  echo "CONFIG not set"
+  exit
+fi
+
+export TECH_BLOGS_CLASSPATH="${TECH_BLOG_HOME}:${KEY_STORE}:${CONFIG}"
 exec java  -classpath "${TECH_BLOGS_CLASSPATH}" $JAVA_OPTS  -Dloader.main=com.qiusuo.techblogs.TechBlogsApplication  org.springframework.boot.loader.PropertiesLauncher
