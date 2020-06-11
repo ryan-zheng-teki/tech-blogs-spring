@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AuthMutation implements GraphQLMutationResolver {
+
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -31,6 +32,7 @@ public class AuthMutation implements GraphQLMutationResolver {
         final String token = jwtTokenUtil.generateToken(userDetails);
         return new JwtResponse(token);
     }
+
 
     private void authenticate(String username, String password, String accessToken, UserType usertype) throws Exception {
         try {

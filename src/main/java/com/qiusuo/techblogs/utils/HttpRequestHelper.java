@@ -25,10 +25,9 @@ public class HttpRequestHelper {
         builder.POST(HttpRequest.BodyPublishers.ofString(requestBody));
 
         StringBuilder sb = new StringBuilder();
-        requestParams.forEach((key, value) -> sb.append(key).append(":").append(value));
-        builder.uri(URI.create(endPoint + "?" + sb.toString()));
+        requestParams.forEach((key, value) -> sb.append(key).append("=").append(value).append("&"));
+        builder.uri(URI.create(endPoint + "?" + sb.deleteCharAt(sb.length() - 1).toString()));
         headers.forEach(builder::setHeader);
-        builder.setHeader("Content-type", "application/json");
 
         HttpRequest request = builder
                 .build();
