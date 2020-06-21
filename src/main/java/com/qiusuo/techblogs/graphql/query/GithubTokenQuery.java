@@ -4,12 +4,14 @@ import com.qiusuo.techblogs.utils.HttpRequestHelper;
 import com.qiusuo.techblogs.utils.QiuSuoException;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
 import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+@Secured("ROLE_ANONYMOUS")
 @Component
 public class GithubTokenQuery implements GraphQLQueryResolver {
     @Value("${oauth_client_id}")

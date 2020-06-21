@@ -14,7 +14,7 @@ public class WeChatAuthenticationStrategy {
      */
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         LOGGER.debug("authenticate via wechat account");
-        String accessToken = authentication.getAccessToken();
+        String accessToken = authentication.getUsername();
         //call github
         return authentication;
     }

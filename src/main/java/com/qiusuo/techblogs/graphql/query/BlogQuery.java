@@ -8,10 +8,12 @@ import graphql.relay.Connection;
 import graphql.relay.SimpleListConnection;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
+@Secured("ROLE_ANONYMOUS")
 @Component
 public class BlogQuery implements GraphQLQueryResolver {
     @Autowired

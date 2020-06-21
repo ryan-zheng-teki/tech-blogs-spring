@@ -8,11 +8,13 @@ public class JwtRequest {
     private String username;
     private String password;
     private UserType usertype;
-
-    //accessToken could either be github accessToken,could also be wechat accessToken
-    private String accessToken;
+    
+    //userId is from Github/Wechat User
+    private String userId;
     private String phoneNumber;
 
     //phone number verification code if login via phone.
     private String verificationCode;
+
+
 }

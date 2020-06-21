@@ -34,15 +34,6 @@ public class GithubAuthenticationStrategy {
      */
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         LOGGER.debug("authenticate via github account");
-        String accessToken = authentication.getAccessToken();
-        /*
-        TODO
-        Step 1: Make a request to Github with the user and accessToken
-        Step 2: If it succeeds, then persist the user and accessToken in database
-        First check if the user already exist in DB. if it doesn't, then insert new user.
-        If the user already exists in DB, then update the accessToken.
-        If the accessToken is invalid, then we should throw one exception for BadCredential.
-         */
         String username = authentication.getUsername();
         QUser user = QUser.user;
         User existingUser = jpaQueryFactory.selectFrom(user)
@@ -54,11 +45,10 @@ public class GithubAuthenticationStrategy {
             newUser.setEnabled(true);
             newUser.setName(username);
             newUser.setUserType(UserType.GITHUB);
-            newUser.setEncryptedPassword(accessToken);
+            newUser.setEncryptedPassword(authentication.getUserId());
             newUser.setRoles(getRoles("ROLE_USER"));
             userRepository.save(newUser);
         } else {
-            existingUser.setEncryptedPassword(accessToken);
             userRepository.save(existingUser);
         }
         return authentication;

@@ -1,19 +1,20 @@
-package com.qiusuo.techblogs.graphql.mutation;
+package com.qiusuo.techblogs.graphql.query;
 
 import com.qiusuo.techblogs.domain.models.user.User;
 import com.qiusuo.techblogs.domain.services.user.UserService;
-import graphql.kickstart.tools.GraphQLMutationResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
-@Secured("ROLE_ANONYMOUS")
+@Secured("ROLE_USER")
 @Component
-public class UserMutation implements GraphQLMutationResolver {
+public class UserQuery implements GraphQLQueryResolver {
     @Autowired
     UserService userService;
 
-    public User registerUser(String name) {
-        return userService.addUser(name);
+    //We could actually get the user details information from the JWT token
+    public User userDetails() {
+        return userService.getCurrentUser();
     }
 }

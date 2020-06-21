@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
+@Secured("ROLE_USER")
 @Component
 public class BlogMutation implements GraphQLMutationResolver {
     @Autowired
     BlogService blogService;
-    
-    @Secured("ROLE_USER")
+
     public BlogItem createBlog(String categoryId, String blogContent) {
         return blogService.createBlog(categoryId, blogContent);
     }

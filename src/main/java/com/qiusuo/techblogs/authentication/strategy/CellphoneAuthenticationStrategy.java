@@ -15,7 +15,7 @@ public class CellphoneAuthenticationStrategy {
      */
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         LOGGER.debug("authenticate via cellphone account");
-        String accessToken = authentication.getAccessToken();
+        String accessToken = authentication.getUsername();
         //call cellphone verification code.
         return authentication;
     }
