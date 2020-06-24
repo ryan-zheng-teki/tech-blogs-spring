@@ -8,17 +8,14 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     private JPAQueryFactory jpaQueryFactory;
-    private PasswordEncoder passwordEncoder;
 
-    public JwtUserDetailsService(JPAQueryFactory jpaQueryFactory, PasswordEncoder passwordEncoder) {
+    public JwtUserDetailsService(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
-        this.passwordEncoder = passwordEncoder;
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

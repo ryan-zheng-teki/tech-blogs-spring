@@ -3,7 +3,7 @@ package com.qiusuo.techblogs.config;
 import com.qiusuo.techblogs.authentication.config.JwtAuthenticationEntryPoint;
 import com.qiusuo.techblogs.authentication.filter.JwtRequestFilter;
 import com.qiusuo.techblogs.authentication.privider.CustomAuthenticationProvider;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,12 +20,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.util.Collections;
 
-@Setter
+@AllArgsConstructor
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    private UserDetailsService jwtUserDetailsService;
     private JwtRequestFilter jwtRequestFilter;
+    private UserDetailsService jwtUserDetailsService;
     private CustomAuthenticationProvider authProvider;
 
     @Override
@@ -47,7 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {

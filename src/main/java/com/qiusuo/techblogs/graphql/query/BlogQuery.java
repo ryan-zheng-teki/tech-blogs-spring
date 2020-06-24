@@ -7,15 +7,13 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.relay.Connection;
 import graphql.relay.SimpleListConnection;
 import graphql.schema.DataFetchingEnvironment;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-@Getter
-@Setter
+@AllArgsConstructor
 @Secured("ROLE_ANONYMOUS")
 @Component
 public class BlogQuery implements GraphQLQueryResolver {

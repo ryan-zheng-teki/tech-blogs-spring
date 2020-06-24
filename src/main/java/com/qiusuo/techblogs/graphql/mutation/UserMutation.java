@@ -3,13 +3,11 @@ package com.qiusuo.techblogs.graphql.mutation;
 import com.qiusuo.techblogs.domain.models.user.User;
 import com.qiusuo.techblogs.domain.services.user.UserService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
-@Getter
-@Setter
+@AllArgsConstructor
 @Secured("ROLE_ANONYMOUS")
 @Component
 public class UserMutation implements GraphQLMutationResolver {

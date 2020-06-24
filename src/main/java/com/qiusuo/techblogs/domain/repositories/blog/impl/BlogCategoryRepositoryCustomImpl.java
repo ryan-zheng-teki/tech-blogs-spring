@@ -6,15 +6,13 @@ import com.qiusuo.techblogs.domain.models.blog.QBlogCategory;
 import com.qiusuo.techblogs.domain.models.blog.QBlogItem;
 import com.qiusuo.techblogs.domain.repositories.blog.BlogCategoryRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 
 import java.util.Collection;
 
-@Getter
-@Setter
-public class BlogCategoryRepositoryCustomImpl implements BlogCategoryRepositoryCustom {
 
+@AllArgsConstructor
+public class BlogCategoryRepositoryCustomImpl implements BlogCategoryRepositoryCustom {
     private JPAQueryFactory queryFactory;
 
     @Override
