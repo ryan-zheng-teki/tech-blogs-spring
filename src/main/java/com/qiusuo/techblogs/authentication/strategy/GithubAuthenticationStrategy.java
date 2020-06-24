@@ -11,7 +11,6 @@ import com.qiusuo.techblogs.domain.repositories.user.UserRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 
@@ -24,11 +23,14 @@ successful, then authentication sucess
 @Configuration
 public class GithubAuthenticationStrategy {
     private static final Logger LOGGER = LoggerFactory.getLogger(GithubAuthenticationStrategy.class);
-    @Autowired
-    JPAQueryFactory jpaQueryFactory;
 
-    @Autowired
+    JPAQueryFactory jpaQueryFactory;
     UserRepository userRepository;
+
+    public GithubAuthenticationStrategy(JPAQueryFactory jpaQueryFactory, UserRepository userRepository) {
+        this.jpaQueryFactory = jpaQueryFactory;
+        this.userRepository = userRepository;
+    }
 
     /*
      */

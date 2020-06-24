@@ -7,7 +7,8 @@ import com.qiusuo.techblogs.authentication.util.JwtResponse;
 import com.qiusuo.techblogs.authentication.util.JwtTokenUtil;
 import com.qiusuo.techblogs.domain.models.user.UserType;
 import graphql.kickstart.tools.GraphQLMutationResolver;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,16 +16,13 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+@Getter
+@Setter
 @Secured("ROLE_ANONYMOUS")
 @Component
 public class AuthMutation implements GraphQLMutationResolver {
-
-    @Autowired
     private AuthenticationManager authenticationManager;
-    @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
     private JwtUserDetailsService userDetailsService;
 
     public JwtResponse createToken(JwtRequest authenticationRequest) throws Exception {

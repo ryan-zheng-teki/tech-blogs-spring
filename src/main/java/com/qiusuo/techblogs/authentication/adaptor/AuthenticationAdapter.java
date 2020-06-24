@@ -6,18 +6,18 @@ import com.qiusuo.techblogs.authentication.strategy.CellphoneAuthenticationStrat
 import com.qiusuo.techblogs.authentication.strategy.GithubAuthenticationStrategy;
 import com.qiusuo.techblogs.authentication.strategy.WeChatAuthenticationStrategy;
 import com.qiusuo.techblogs.domain.models.user.UserType;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+@Getter
+@Setter
 @Component
 public class AuthenticationAdapter {
-    @Autowired
-    GithubAuthenticationStrategy githubAuthenticationStrategy;
-    @Autowired
-    WeChatAuthenticationStrategy weChatAuthenticationStrategy;
-    @Autowired
-    CellphoneAuthenticationStrategy cellphoneAuthenticationStrategy;
+    private GithubAuthenticationStrategy githubAuthenticationStrategy;
+    private WeChatAuthenticationStrategy weChatAuthenticationStrategy;
+    private CellphoneAuthenticationStrategy cellphoneAuthenticationStrategy;
 
     public Authentication authenticate(CustomAuthenticationToken authentication) {
         if (authentication.getAuthenticationType() == UserType.GITHUB) {
@@ -25,5 +25,4 @@ public class AuthenticationAdapter {
         }
         return null;
     }
-
 }

@@ -7,7 +7,6 @@ import com.qiusuo.techblogs.authentication.util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -22,12 +21,16 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+    private String username;
     Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
     private JwtUserDetailsService jwtUserDetailsService;
+
+    public JwtRequestFilter(JwtTokenUtil jwtTokenUtil, JwtUserDetailsService jwtUserDetailsService) {
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.jwtUserDetailsService = jwtUserDetailsService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)

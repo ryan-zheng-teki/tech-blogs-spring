@@ -3,6 +3,7 @@ package com.qiusuo.techblogs.config;
 import com.qiusuo.techblogs.authentication.config.JwtAuthenticationEntryPoint;
 import com.qiusuo.techblogs.authentication.filter.JwtRequestFilter;
 import com.qiusuo.techblogs.authentication.privider.CustomAuthenticationProvider;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +20,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.util.Collections;
 
+@Setter
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private UserDetailsService jwtUserDetailsService;
+    private JwtRequestFilter jwtRequestFilter;
+    private CustomAuthenticationProvider authProvider;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -32,13 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    @Autowired
-    private UserDetailsService jwtUserDetailsService;
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
-
-    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
@@ -48,8 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    private CustomAuthenticationProvider authProvider;
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {

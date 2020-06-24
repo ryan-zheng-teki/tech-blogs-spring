@@ -5,7 +5,6 @@ import com.qiusuo.techblogs.domain.models.user.QUser;
 import com.qiusuo.techblogs.domain.models.user.Role;
 import com.qiusuo.techblogs.domain.models.user.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,11 +13,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
-    @Autowired
-    JPAQueryFactory jpaQueryFactory;
+    private JPAQueryFactory jpaQueryFactory;
+    private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    public JwtUserDetailsService(JPAQueryFactory jpaQueryFactory, PasswordEncoder passwordEncoder) {
+        this.jpaQueryFactory = jpaQueryFactory;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

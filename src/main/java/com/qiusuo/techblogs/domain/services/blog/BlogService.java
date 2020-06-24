@@ -5,7 +5,6 @@ import com.qiusuo.techblogs.domain.models.blog.BlogCategory;
 import com.qiusuo.techblogs.domain.models.blog.BlogItem;
 import com.qiusuo.techblogs.domain.repositories.blog.BlogCategoryRepository;
 import com.qiusuo.techblogs.domain.repositories.blog.BlogItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -19,14 +18,15 @@ import java.util.List;
 @Transactional
 @Service
 public class BlogService {
-    @Autowired
     private EntityManager em;
-
-    @Autowired
     private BlogCategoryRepository blogCategoryRepository;
-
-    @Autowired
     private BlogItemRepository blogItemRepository;
+
+    public BlogService(EntityManager em, BlogCategoryRepository blogCategoryRepository, BlogItemRepository blogItemRep) {
+        this.em = em;
+        this.blogCategoryRepository = blogCategoryRepository;
+        this.blogItemRepository = blogItemRepository;
+    }
 
     public Collection<BlogItem> getBlogsForCategory(String categoryId) {
         return blogCategoryRepository.getBlogsForCategory(categoryId);
