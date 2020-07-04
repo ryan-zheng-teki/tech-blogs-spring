@@ -12,7 +12,9 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 
@@ -24,12 +26,12 @@ successful, then authentication sucess
 public class GithubAuthenticationStrategy {
     private static final Logger LOGGER = LoggerFactory.getLogger(GithubAuthenticationStrategy.class);
 
-    JPAQueryFactory jpaQueryFactory;
     UserRepository userRepository;
+    JPAQueryFactory jpaQueryFactory;
 
-    public GithubAuthenticationStrategy(JPAQueryFactory jpaQueryFactory, UserRepository userRepository) {
-        this.jpaQueryFactory = jpaQueryFactory;
+    public GithubAuthenticationStrategy(JPAQueryFactory jpaQueryFactory,UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.jpaQueryFactory = jpaQueryFactory;
     }
 
     /*
@@ -38,20 +40,22 @@ public class GithubAuthenticationStrategy {
         LOGGER.debug("authenticate via github account");
         String username = authentication.getUsername();
         QUser user = QUser.user;
-        User existingUser = jpaQueryFactory.selectFrom(user)
-                .where(user.name.eq(username))
-                .fetchOne();
 
-        if (existingUser == null) {
+        try {
+            User existingUser = userRepository.getUserByName(username);
+        } catch(UsernameNotFoundException e) {
             User newUser = new User();
             newUser.setEnabled(true);
             newUser.setName(username);
             newUser.setUserType(UserType.GITHUB);
+            newUser.setUserId(authentication.getUserId());
+            newUser.setAvatarUrl(authentication.getAvatarUrl());
+            /*We set the password because when building user in JwtUserService
+            Password is one mandatory field
+             */
             newUser.setEncryptedPassword(authentication.getUserId());
-            newUser.setRoles(getRoles("ROLE_USER"));
+            newUser.setRoles(getRoles("USER"));
             userRepository.save(newUser);
-        } else {
-            userRepository.save(existingUser);
         }
         return authentication;
     }

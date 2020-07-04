@@ -16,5 +16,5 @@ public class JwtRequest {
     //phone number verification code if login via phone.
     private String verificationCode;
 
-
+    private String avatarUrl;
 }

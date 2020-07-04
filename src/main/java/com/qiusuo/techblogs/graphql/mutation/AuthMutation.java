@@ -24,7 +24,8 @@ public class AuthMutation implements GraphQLMutationResolver {
     private JwtUserDetailsService userDetailsService;
 
     public JwtResponse createToken(JwtRequest authenticationRequest) throws Exception {
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getUserId(), authenticationRequest.getPassword(), authenticationRequest.getUsertype());
+        authenticate(authenticationRequest.getUsername(), authenticationRequest.getUserId(),
+                authenticationRequest.getPassword(), authenticationRequest.getUsertype(),authenticationRequest.getAvatarUrl());
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
@@ -32,9 +33,9 @@ public class AuthMutation implements GraphQLMutationResolver {
     }
 
 
-    private void authenticate(String username, String userId, String password, UserType usertype) throws Exception {
+    private void authenticate(String username, String userId, String password, UserType usertype,String avatarUrl) throws Exception {
         try {
-            authenticationManager.authenticate(new CustomAuthenticationToken(username, userId, password, usertype));
+            authenticationManager.authenticate(new CustomAuthenticationToken(username, userId, password, usertype,avatarUrl));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {

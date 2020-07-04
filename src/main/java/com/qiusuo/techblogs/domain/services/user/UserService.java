@@ -40,12 +40,12 @@ public class UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             CustomAuthenticationToken customAuthenticationToken = (CustomAuthenticationToken) authentication;
-            return getUserById(customAuthenticationToken.getUserId());
+            return getUserByName(customAuthenticationToken.getUsername());
         }
         return null;
     }
 
-    public User getUserById(String id) {
-        return userRepository.getOne(id);
+    public User getUserByName(String name) {
+        return userRepository.getUserByName(name);
     }
 }

@@ -5,6 +5,7 @@ input JwtRequest {
     verificationCode: String
     usertype: String!
     userId: String!
+    avatarUrl: String!
 }
 
 type JwtResponse {

@@ -20,8 +20,10 @@ public class User {
     @SequenceGenerator(name = "user_id_generator", sequenceName = "user_seq")
     private Long id;
 
-    @Column(unique = true)
     private String name;
+
+    @Column(unique = true)
+    private String userId;
 
     private String encryptedPassword;
 

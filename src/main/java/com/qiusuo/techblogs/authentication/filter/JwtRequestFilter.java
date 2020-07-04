@@ -39,6 +39,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         what i need to do is first check
          */
         final String requestTokenHeader = request.getHeader("Authorization");
+        System.out.println("Authorization is "+requestTokenHeader);
         String username = null;
         String jwtToken = null;
 
@@ -62,6 +63,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                         userDetails, userDetails.getAuthorities());
                 customAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                customAuthenticationToken.setAuthenticated(true);
                 SecurityContextHolder.getContext().setAuthentication(customAuthenticationToken);
             }
         }

@@ -22,7 +22,7 @@ public class BlogService {
     private BlogCategoryRepository blogCategoryRepository;
     private BlogItemRepository blogItemRepository;
 
-    public BlogService(EntityManager em, BlogCategoryRepository blogCategoryRepository, BlogItemRepository blogItemRep) {
+    public BlogService(EntityManager em, BlogCategoryRepository blogCategoryRepository, BlogItemRepository blogItemRepository) {
         this.em = em;
         this.blogCategoryRepository = blogCategoryRepository;
         this.blogItemRepository = blogItemRepository;
