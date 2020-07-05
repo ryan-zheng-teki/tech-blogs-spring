@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 @AllArgsConstructor
-@Secured("ROLE_ANONYMOUS")
 @Component
 public class BlogQuery implements GraphQLQueryResolver {
     BlogService blogService;

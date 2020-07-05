@@ -14,7 +14,7 @@ public class UserQuery implements GraphQLQueryResolver {
     UserService userService;
 
     //We could actually get the user details information from the JWT token
-    public User userDetails() {
+    public User userDetails() throws InterruptedException {
         return userService.getCurrentUser();
     }
 }
